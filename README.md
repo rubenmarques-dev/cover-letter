@@ -1,16 +1,39 @@
-# React + Vite
+# Cover Letter — Personal Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal cover-letter / portfolio site for **Ruben Marques**, built with React + Vite and Tailwind CSS. Includes sections for About, Experience, Education, Projects, Skills, and Contact, plus a downloadable PDF CV.
 
-Currently, two official plugins are available:
+🌐 **Live site:** https://rubenmarques-dev.github.io/cover-letter/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
+- [React 19](https://react.dev/)
+- [Vite 8](https://vite.dev/)
+- [Tailwind CSS 4](https://tailwindcss.com/)
+- [ESLint](https://eslint.org/)
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev      # start dev server
+npm run build    # production build to ./dist
+npm run preview  # preview the production build locally
+npm run lint     # run ESLint
+```
 
-## Expanding the ESLint configuration
+## Project Structure
+```
+src/
+├── components/   # About, Contact, Education, Experience, Footer, Hero, Navbar, Projects, Skills
+├── assets/       # images
+├── App.jsx
+├── main.jsx
+└── index.css
+public/
+└── ruben_marques.pdf   # downloadable CV
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Deployment
+
+The site is automatically deployed to **GitHub Pages** via [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) on every push to `main`.
+
+Vite is configured with `base: '/cover-letter/'` in [`vite.config.js`](./vite.config.js) so all asset paths resolve correctly under the GitHub Pages subpath.
