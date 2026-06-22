@@ -73,7 +73,7 @@ export default function Contact() {
 
         {/* Download CV */}
         <a
-          href="/ruben_marques.pdf"
+          href={`${import.meta.env.BASE_URL}ruben_marques.pdf`}
           download
           className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300"
         >
