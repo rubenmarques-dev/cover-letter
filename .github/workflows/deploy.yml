@@ -1,4 +1,18 @@
+# Builds the Vite app and publishes the static output to GitHub Pages.
+#
+# Triggers:
+#   - Push to `main` (automatic deploy)
+#   - Manual run via the Actions tab (workflow_dispatch)
+#
+# Jobs:
+#   build  – installs deps with `npm ci`, runs `npm run build`, and uploads
+#            the generated `dist/` folder as a Pages artifact.
+#   deploy – publishes the artifact to the `github-pages` environment.
+#
+# Requires: repo Settings → Pages → Source set to "GitHub Actions".
 name: Deploy to GitHub Pages
+
+run-name: Deploy ${{ github.sha }} to GitHub Pages
 
 on:
   push:
@@ -16,12 +30,13 @@ concurrency:
 
 jobs:
   build:
+    name: Build site
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
       - run: npm ci
       - run: npm run build
@@ -31,6 +46,7 @@ jobs:
           path: dist
 
   deploy:
+    name: Deploy to Pages
     needs: build
     runs-on: ubuntu-latest
     environment:
